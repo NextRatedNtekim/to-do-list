@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#44b335"/>
+      <stop offset="55%" stop-color="#4a6a4e"/>
+      <stop offset="100%" stop-color="#152d17"/>
+    </linearGradient>
+  </defs>
+  <!-- rounded square background -->
+  <rect width="256" height="256" rx="48" fill="url(#bg)"/>
+  <!-- T: horizontal bar -->
+  <rect x="88" y="58" width="80" height="22" rx="6" fill="white"/>
+  <!-- T: vertical bar -->
+  <rect x="117" y="80" width="22" height="108" rx="6" fill="white"/>
+  <!-- subtle checkmark accent -->
+  <polyline points="62,158 80,180 112,138" fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+</svg>
