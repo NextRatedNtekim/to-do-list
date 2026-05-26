@@ -163,7 +163,8 @@ export function SettingsPage() {
           <div style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.7 }}>
             Built with React, Vite, Supabase, Zustand, and Framer Motion.
             <br />
-            <span style={{ color: 'var(--brand)', fontWeight: 700 }}>Made by Samuel Ntekim</span>
+            <div style={{ color: 'var(--brand)', fontWeight: 700 }}>Designed and developed by <span style={{color: 'var(--text-muted)'}}>Samuel Ntekim</span></div>
+            <div style={{ color: 'var(--brand)', fontWeight: 700 }}>Marketing Lead by <span style={{color: 'var(--text-muted)'}}>Prisilla-Fagha Debo</span></div>
           </div>
         </div>
       </Section>
