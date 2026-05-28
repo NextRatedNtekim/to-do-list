@@ -148,3 +148,174 @@
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+/* ═══════════════════════════════════════════════════════════
+   TASKR UI UPGRADE — append these rules to your index.css
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Date strip active day ─────────────────────────────────── */
+.date-day-active {
+  background: var(--brand) !important;
+  color: #fff !important;
+  border-color: var(--brand) !important;
+}
+
+/* ── Hero card gradient blobs (decorative) ─────────────────── */
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+
+/* ── Task card hover lift — extends .card ──────────────────── */
+.task-card-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.task-card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Status badge variants ─────────────────────────────────── */
+.badge-done     { background: rgba(34, 197, 94, 0.12);  color: #22c55e; }
+.badge-todo     { background: rgba(96, 165, 250, 0.12); color: #60a5fa; }
+.badge-progress { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+.badge-urgent   { background: rgba(239, 68,  68, 0.12); color: #ef4444; }
+.badge-high     { background: rgba(244, 63,  94, 0.12); color: #f43f5e; }
+
+/* ── Mini donut label overlay ──────────────────────────────── */
+.donut-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  pointer-events: none;
+}
+
+/* ── MobileNav pill ────────────────────────────────────────── */
+.mobile-nav-pill {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--brand-muted);
+  z-index: 0;
+}
+
+/* ── Avatar circle ─────────────────────────────────────────── */
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 800;
+  font-family: var(--font-display);
+  flex-shrink: 0;
+  user-select: none;
+}
+.avatar-sm  { width: 36px; height: 36px; font-size: 13px; }
+.avatar-md  { width: 44px; height: 44px; font-size: 15px; }
+.avatar-lg  { width: 56px; height: 56px; font-size: 18px; }
+.avatar-brand {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+}
+
+/* ── Group icon box ────────────────────────────────────────── */
+.group-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Section heading with count badge ─────────────────────── */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+/* ── Horizontal scroll row (project cards) ─────────────────── */
+.h-scroll-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+}
+.h-scroll-row::-webkit-scrollbar { display: none; }
+.h-scroll-row { scrollbar-width: none; }
+
+/* ── FAB (Floating Action Button) ──────────────────────────── */
+.fab {
+  position: fixed;
+  bottom: calc(72px + env(safe-area-inset-bottom));
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-brand);
+  z-index: 40;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 32px rgba(34, 197, 94, 0.45);
+}
+.fab:active { transform: scale(0.94); }
+
+/* ── Responsive tweaks ─────────────────────────────────────── */
+@media (max-width: 480px) {
+  .page-title { font-size: 20px !important; }
+  .hero-card-text { font-size: 14px; }
+  .group-row-label { font-size: 13px; }
+  .task-card-title { font-size: 14px !important; }
+}
+
+@media (min-width: 768px) {
+  /* On tablet+, make in-progress cards a proper 2-col grid */
+  .in-progress-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  /* FAB moves further from edge */
+  .fab {
+    bottom: 32px;
+    right: 32px;
+    width: 58px;
+    height: 58px;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* 3-col in-progress on wide screens */
+  .in-progress-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
