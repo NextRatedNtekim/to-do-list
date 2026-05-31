@@ -301,12 +301,12 @@ export default function App() {
             <AppShell>
               <ActivePage />
             </AppShell>
-           ) 
+            ) 
          ) : ( 
-          // {/* // Pass a way for AuthPage to go back to landing if needed */}
+          
           <AuthPage onGoHome={goToLanding} /> 
          )
-       )}
+       )} 
 
       <ToastContainer />
       <XPFloatLayer />

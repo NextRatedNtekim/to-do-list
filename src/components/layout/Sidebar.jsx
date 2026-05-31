@@ -304,7 +304,7 @@ export function Sidebar({ isMobile }) {
           color:         'var(--text-primary)',
           lineHeight:    1,
         }}>
-          Task<span style={{ color: 'var(--brand)' }}>r</span>
+          WithTask<span style={{ color: 'var(--brand)' }}>r</span>
         </div>
         {isMobile && (
           <button onClick={() => setSidebarOpen(false)} className="btn-icon" aria-label="Close sidebar">

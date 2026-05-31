@@ -154,9 +154,9 @@ export function SettingsPage() {
       <Section title="About" Icon={Info} index={4}>
         <div style={{ padding: 'clamp(12px,2.5vw,16px) clamp(14px,3vw,20px)' }}>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 10 }}>
-            <div style={{ width: 44, height: 44, borderRadius: 12, flexShrink: 0, background: 'linear-gradient(135deg, #16a34a, #22c55e)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 800, color: '#fff' }}>T</div>
+            <div style={{ width: 44, height: 44, borderRadius: 12, flexShrink: 0, background: 'linear-gradient(135deg, #16a34a, #22c55e)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 800, color: '#fff' }}>wT</div>
             <div>
-              <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>Taskr v2.0</div>
+              <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>WithTaskr v1.0</div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Gamified Productivity Platform</div>
             </div>
           </div>
