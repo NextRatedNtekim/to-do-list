@@ -288,7 +288,7 @@ export default function App() {
 
   return (
     <>
-      <Preloader visible={showPreloader} />
+      {/* <Preloader visible={showPreloader} />
 
       {appReady && !authLoading && (
          user ? ( 
@@ -301,16 +301,32 @@ export default function App() {
             <AppShell>
               <ActivePage />
             </AppShell>
-            ) 
+              ) 
          ) : ( 
           
           <AuthPage onGoHome={goToLanding} /> 
          )
-       )} 
+       )}  
+
+      <ToastContainer />
+      <XPFloatLayer />
+      <LevelUpOverlay /> */}
+             <Preloader visible={showPreloader} />
+
+       {appReady && !authLoading && (
+        user ? (
+          <AppShell>
+            <ActivePage />
+          </AppShell>
+        ) : (
+          <AuthPage />
+        )
+      )}
 
       <ToastContainer />
       <XPFloatLayer />
       <LevelUpOverlay />
+
     </>
   )
 }

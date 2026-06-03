@@ -8,7 +8,6 @@ import {
   STREAK_MILESTONES,
 } from '@/utils/constants'
 
-
 // ── Task Store ────────────────────────────────────────────────────
 // persist() keeps tasks in localStorage as a cache.
 // Supabase is the source of truth — syncFromSupabase() overwrites the cache on login.

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Plus } from 'lucide-react'
+import { Plus, Flower2 } from 'lucide-react'
 
 export function EmptyState({ hasFilter, onAddTask }) {
   if (hasFilter) {
@@ -14,8 +14,8 @@ export function EmptyState({ hasFilter, onAddTask }) {
   return (
     <div style={{ textAlign: 'center', padding: 'clamp(32px,6vw,52px) 24px' }}>
       <motion.div initial={{ opacity: 0, scale: 0.8, y: 12 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} style={{ fontSize: 56, marginBottom: 16 }}>
-          🌱
+        <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} style={{ fontSize: 56, marginBottom: 16 }} className='flex justify-center'>
+          <Flower2 size={28}/>
         </motion.div>
       </motion.div>
       <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.18 }}
