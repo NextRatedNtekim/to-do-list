@@ -12,7 +12,7 @@
 import { useEffect, useState, useRef } from 'react'
 
 // ── LAUNCH DATE: Saturday, June 3, 2026 ──────────────────────────────────────
-const LAUNCH_DATE = new Date('2026-06-05T14:00:00')
+const LAUNCH_DATE = new Date('2026-06-07T16:00:00')
 // ─────────────────────────────────────────────────────────────────────────────
 
 function getTimeLeft() {
