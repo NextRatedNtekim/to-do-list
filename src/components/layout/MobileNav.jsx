@@ -403,14 +403,14 @@
 
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { LayoutDashboard, CheckSquare, BarChart2, Trophy, Settings, Bell } from 'lucide-react'
+import { LayoutDashboard, CheckSquare, BarChart2, Trophy, Settings, Bell, Calendar } from 'lucide-react'
 import { useUIStore } from '@/store'
 import { useNotificationStore } from '@/store/notificationStore'
 
 const NAV = [
   { id: 'dashboard',    label: 'Home',    Icon: LayoutDashboard },
   
-  { id: 'analytics',   label: 'Stats',   Icon: BarChart2,  },
+  { id: 'calendar',    label: 'Calendar',     Icon: Calendar },
   { id: 'tasks',        label: 'Tasks',   Icon: CheckSquare, center: true },
   // { id: 'leaderboard', label: 'Ranks',   Icon: Trophy },
   { id: 'partner',     label: 'Partner', Icon: Bell },

@@ -100,6 +100,7 @@
 
     /* ── Brand stays true ── */
     --brand:          #22c55e;
+    --brand:          #22c55e;
     --brand-hover:    #4ade80;
     --brand-muted:    rgba(34,197,94,0.14);
     --brand-glow:     rgba(34,197,94,0.20);

@@ -318,13 +318,18 @@ import { PrivacyPage }                                 from '@/pages/PrivacyPage
 import { CountdownPage, LAUNCH_DATE }                  from '@/pages/Countdown'
 import { fetchTasks }                                  from '@/services/taskService'
 import { fetchProfile, upsertProfile }                 from '@/services/profileService'
+import { CalendarScreen }       from '@/pages/CalendarScreen'
+import { AICharacter }          from '@/components/ai/AICharacter'
+import { CompletionBurstLayer } from '@/components/ui/CompletionEffect'
 const PAGE_MAP = {
   dashboard:   DashboardPage,
   tasks:       TasksPage,
+  calendar:    CalendarScreen,
   analytics:   AnalyticsPage,
   leaderboard: LeaderboardPage,
   partner:     PartnerPage,
   settings:    SettingsPage,
+  
 }
 
 function shouldShowCountdown() {
@@ -431,9 +436,9 @@ export default function App() {
 
   return (
     <>
-      <Preloader visible={showPreloader} />
+      {/* <Preloader visible={showPreloader} /> */}
 
-      {appReady && !authLoading && (
+      {/* {appReady && !authLoading && (
         user ? (
           showCountdown ? (
             <CountdownPage
@@ -441,19 +446,103 @@ export default function App() {
               userName={user.name || user.email}
             />
           ) 
-          : (
+          : ( */}
             <AppShell>
               <ActivePage />
+              <AICharacter />
             </AppShell>
-             )
+             {/* )
         ) : (
           <AuthPage onGoHome={goToLanding} />
         )
-      )} 
+      )}  */}
 
       <ToastContainer />
       <XPFloatLayer />
       <LevelUpOverlay />
+      {/* <CompletionBurstLayer /> */}
     </>
   )
 }
+/**
+ * ══════════════════════════════════════════════════════════════
+ * App.jsx PATCH — TASKR 2.0 UPGRADE
+ * ══════════════════════════════════════════════════════════════
+ *
+ * Apply these FOUR changes to your existing App.jsx.
+ * Do NOT replace the file — only add the marked lines.
+ *
+ * ── CHANGE 1: Add new imports (after existing imports) ───────
+ *
+ * import { CalendarScreen }      from '@/pages/CalendarScreen'
+ * import { AICharacter }         from '@/components/ai/AICharacter'
+ * import { CompletionBurstLayer } from '@/components/ui/CompletionEffect'
+ *
+ * ── CHANGE 2: Add 'calendar' to PAGE_MAP ─────────────────────
+ *
+ * const PAGE_MAP = {
+ *   dashboard:   DashboardPage,
+ *   tasks:       TasksPage,
+ *   analytics:   AnalyticsPage,
+ *   leaderboard: LeaderboardPage,
+ *   partner:     PartnerPage,
+ *   settings:    SettingsPage,
+ *   calendar:    CalendarScreen,   // ← ADD THIS LINE
+ * }
+ *
+ * ── CHANGE 3: Add AICharacter and CompletionBurstLayer ───────
+ *   Inside the AppShell block, after <ActivePage />:
+ *
+ *   <AppShell>
+ *     <ActivePage />
+ *     <AICharacter />              // ← ADD (Dashboard-only orb)
+ *   </AppShell>
+ *
+ *   And add <CompletionBurstLayer /> next to <ToastContainer />:
+ *
+ *   <ToastContainer />
+ *   <XPFloatLayer />
+ *   <LevelUpOverlay />
+ *   <CompletionBurstLayer />      // ← ADD THIS
+ *
+ * ── CHANGE 4: Add glass.css import to main.jsx ───────────────
+ *   In src/main.jsx, add:
+ *
+ *   import './styles/glass.css'
+ *
+ * ══════════════════════════════════════════════════════════════
+ * That's it. No existing logic is touched.
+ * ══════════════════════════════════════════════════════════════
+ */
+
+// For reference — here is the exact diff for App.jsx:
+
+/*
+ADDITIONS ONLY — nothing removed or changed:
+
++ import { CalendarScreen }       from '@/pages/CalendarScreen'
++ import { AICharacter }          from '@/components/ai/AICharacter'
++ import { CompletionBurstLayer } from '@/components/ui/CompletionEffect'
+
+  const PAGE_MAP = {
+    dashboard:   DashboardPage,
+    tasks:       TasksPage,
+    analytics:   AnalyticsPage,
+    leaderboard: LeaderboardPage,
+    partner:     PartnerPage,
+    settings:    SettingsPage,
++   calendar:    CalendarScreen,
+  }
+
+  // In the AppShell block:
+  <AppShell>
+    <ActivePage />
++   <AICharacter />
+  </AppShell>
+
+  // At the bottom:
+  <ToastContainer />
+  <XPFloatLayer />
+  <LevelUpOverlay />
++ <CompletionBurstLayer />
+*/

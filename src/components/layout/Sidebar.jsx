@@ -536,7 +536,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   LayoutDashboard, CheckSquare, BarChart2, Trophy,
-  Users, Settings, X, Sun, Moon, Zap, ChevronRight,
+  Users, Settings, X, Sun, Moon, Zap, ChevronRight, Calendar
 } from 'lucide-react'
 import { useUIStore, useUserStore } from '@/store'
 import { useTheme } from '@/hooks'
@@ -545,6 +545,7 @@ import { levelFromXP, getRankForLevel } from '@/utils/constants'
 const NAV_ITEMS = [
   { id: 'dashboard',   label: 'Dashboard',   Icon: LayoutDashboard },
   { id: 'tasks',       label: 'Tasks',        Icon: CheckSquare },
+  { id: 'calendar',    label: 'Calendar',     Icon: Calendar },
   { id: 'analytics',   label: 'Analytics',    Icon: BarChart2 },
   { id: 'leaderboard', label: 'Leaderboard',  Icon: Trophy },
   { id: 'partner',     label: 'Partner',      Icon: Users },
