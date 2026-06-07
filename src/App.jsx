@@ -436,9 +436,9 @@ export default function App() {
 
   return (
     <>
-      {/* <Preloader visible={showPreloader} /> */}
+      <Preloader visible={showPreloader} />
 
-      {/* {appReady && !authLoading && (
+      {appReady && !authLoading && (
         user ? (
           showCountdown ? (
             <CountdownPage
@@ -446,16 +446,16 @@ export default function App() {
               userName={user.name || user.email}
             />
           ) 
-          : ( */}
+          : (
             <AppShell>
               <ActivePage />
               <AICharacter />
             </AppShell>
-             {/* )
+              )
         ) : (
           <AuthPage onGoHome={goToLanding} />
         )
-      )}  */}
+      )}  
 
       <ToastContainer />
       <XPFloatLayer />
