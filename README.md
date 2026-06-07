@@ -1,8 +1,64 @@
 # WithTaskr V1 — Integration Guide
-## Every file, in exact order. Copy-paste ready.
-
 ---
+An accountability and productivity app that helps users complete tasks,
+maintain streaks, earn XP, and stay accountable with partners.
 
+## Features
+
+- Task management
+- XP and leveling system
+- Accountability partner system
+- Smart alarms
+- Push notifications
+- Analytics dashboard
+
+## Tech Stack
+
+- React
+- Vite
+- Supabase
+- Zustand
+- Framer Motion
+- Tailwind CSS
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourname/withtaskr.git
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start development server:
+
+```bash
+npm run dev
+```
+
+## Environment Variables
+
+Create a `.env` file:
+
+```env
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_ANON_KEY=...
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+## License
+
+MIT
 ## Files in this package
 
 | File | Action | Where it goes |

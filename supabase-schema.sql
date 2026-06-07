@@ -958,3 +958,77 @@ END $$;
 -- ============================================================
 -- END OF SCHEMA
 -- ============================================================
+
+-- ============================================================
+-- WithTaskr V1 — Schema Additions
+-- Run this in Supabase Studio → SQL Editor
+-- These ADD to your existing schema without breaking anything.
+-- ============================================================
+
+-- ─── 1. Add alarm columns to existing tasks table ────────────────────────────
+ALTER TABLE tasks
+  ADD COLUMN IF NOT EXISTS alarm_time       TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS reminder_offsets INT[]       DEFAULT '{60,30,10}',
+  ADD COLUMN IF NOT EXISTS missed_at        TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS recovery_action  TEXT        CHECK (recovery_action IN ('do_now','move_tonight','tomorrow')),
+  ADD COLUMN IF NOT EXISTS partner_shared   BOOLEAN     DEFAULT false;
+
+-- Index for the alarm worker (queries tasks by alarm_time every minute)
+CREATE INDEX IF NOT EXISTS idx_tasks_alarm_time
+  ON tasks (alarm_time)
+  WHERE alarm_time IS NOT NULL AND completed_at IS NULL AND missed_at IS NULL;
+
+-- ─── 2. Scheduled accountability sessions ────────────────────────────────────
+CREATE TABLE IF NOT EXISTS scheduled_sessions (
+  id             UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id        UUID        NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  partner_id     UUID        NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  task_id        TEXT,
+  scheduled_for  TIMESTAMPTZ NOT NULL,
+  status         TEXT        NOT NULL DEFAULT 'planned'
+                             CHECK (status IN ('planned','active','completed','missed')),
+  notes          TEXT,
+  created_at     TIMESTAMPTZ DEFAULT now()
+);
+
+ALTER TABLE scheduled_sessions ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users see own sessions" ON scheduled_sessions
+  FOR SELECT USING (auth.uid() = user_id OR auth.uid() = partner_id);
+
+CREATE POLICY "Users create own sessions" ON scheduled_sessions
+  FOR INSERT WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Users update own sessions" ON scheduled_sessions
+  FOR UPDATE USING (auth.uid() = user_id OR auth.uid() = partner_id);
+
+-- ─── 3. Push notification subscriptions ──────────────────────────────────────
+CREATE TABLE IF NOT EXISTS push_subscriptions (
+  id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id    UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE UNIQUE,
+  endpoint   TEXT NOT NULL,
+  p256dh     TEXT NOT NULL,
+  auth       TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+ALTER TABLE push_subscriptions ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users manage own push subscription" ON push_subscriptions
+  FOR ALL USING (auth.uid() = user_id);
+
+-- Service role can read all (needed by alarm-worker Edge Function)
+CREATE POLICY "Service role reads all subscriptions" ON push_subscriptions
+  FOR SELECT USING (auth.role() = 'service_role');
+
+-- ─── 4. Add onboarding flag to user_profiles (if not already present) ────────
+ALTER TABLE user_profiles
+  ADD COLUMN IF NOT EXISTS onboarding_complete BOOLEAN DEFAULT false,
+  ADD COLUMN IF NOT EXISTS quiet_hours_start   INT     DEFAULT 23,  -- 11 PM
+  ADD COLUMN IF NOT EXISTS quiet_hours_end     INT     DEFAULT 7,   -- 7 AM
+  ADD COLUMN IF NOT EXISTS goal_category       TEXT;
+
+-- ─── 5. Enable Realtime on new tables ────────────────────────────────────────
+-- (activity_feed and notifications already have realtime enabled per your schema)
+ALTER PUBLICATION supabase_realtime ADD TABLE scheduled_sessions;

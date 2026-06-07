@@ -41,6 +41,7 @@ export const useAuthStore = create((set, get) => ({
     })
     return unsubscribe
   },
+  
 
   /** Register with email + password. */
   register: async (email, password, name) => {

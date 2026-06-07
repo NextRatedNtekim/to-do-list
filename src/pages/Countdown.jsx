@@ -1,18 +1,8 @@
-/**
- * CountdownPage.jsx
- * -----------------
- * Shown to authenticated users when the app hasn't launched yet.
- * Once the countdown hits zero, calls onLaunch() to reveal the main app.
- *
- * Props:
- *   onLaunch  — callback fired when countdown reaches 0
- *   userName  — optional display name for the logged-in user
- */
 
 import { useEffect, useState, useRef } from 'react'
 
 // ── LAUNCH DATE: Saturday, June 3, 2026 ──────────────────────────────────────
-const LAUNCH_DATE = new Date('2026-06-07T16:00:00')
+const LAUNCH_DATE = new Date('2026-06-07T18:00:00')
 // ─────────────────────────────────────────────────────────────────────────────
 
 function getTimeLeft() {
