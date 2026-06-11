@@ -36,7 +36,7 @@ const PAGE_MAP = {
   partner:     PartnerPage,
   settings:    SettingsPage,
   calendar:    CalendarScreen,
-  routines:    RoutinesPage,
+  // routines:    RoutinesPage,
 }
 
 // Pages on which the AI character should appear
@@ -164,23 +164,23 @@ export default function App() {
     <>
       <Preloader visible={showPreloader} />
 
-      {appReady && !authLoading && (
+      {/* {appReady && !authLoading && (
         user ? (
           showCountdown ? (
             <CountdownPage
               onLaunch={handleLaunch}
               userName={user.name || user.email}
             />
-          ) : (
+          ) : ( */}
             <AppShell>
               <ActivePage />
               {AI_CHARACTER_VIEWS.has(activeView) && <AICharacter />}
             </AppShell>
-          )
+          {/* )
         ) : (
           <AuthPage onGoHome={goToLanding} />
         )
-      )}
+      )} */}
 
       <ToastContainer />
       <XPFloatLayer />

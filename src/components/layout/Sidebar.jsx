@@ -840,7 +840,7 @@ import { levelFromXP, getRankForLevel } from '@/utils/constants'
 const NAV_ITEMS = [
   { id: 'dashboard',   label: 'Dashboard',   Icon: LayoutDashboard },
   { id: 'tasks',       label: 'Tasks',        Icon: CheckSquare     },
-  { id: 'routines',    label: 'Routines',     Icon: RefreshCw       }, // ← NEW
+  // { id: 'routines',    label: 'Routines',     Icon: RefreshCw       }, // ← NEW
   { id: 'calendar',    label: 'Calendar',     Icon: Calendar        }, // ← NEW
   { id: 'analytics',   label: 'Analytics',    Icon: BarChart2       },
   { id: 'leaderboard', label: 'Leaderboard',  Icon: Trophy          },

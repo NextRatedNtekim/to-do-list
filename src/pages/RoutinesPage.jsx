@@ -1011,10 +1011,14 @@ import { useEffect, useState, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence }    from 'framer-motion'
 import { format, isToday }            from 'date-fns'
 import {
-  Plus, RefreshCw, Flame, Trophy, TrendingDown,
-  ChevronDown, Calendar, BarChart2,
+  Plus,
+  Trophy,
+  TrendingUp,
+  TrendingDown,
+  ChevronDown,
+  Calendar,
+  BarChart2,
 } from 'lucide-react'
-
 import { useRoutineStore }    from '@/store/routineStore'
 import { useUserStore }       from '@/store'
 import { useAuthStore }       from '@/store/authStore'
