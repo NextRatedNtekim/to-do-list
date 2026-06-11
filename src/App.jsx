@@ -164,23 +164,23 @@ export default function App() {
     <>
       <Preloader visible={showPreloader} />
 
-      {/* {appReady && !authLoading && (
+      {appReady && !authLoading && (
         user ? (
           showCountdown ? (
             <CountdownPage
               onLaunch={handleLaunch}
               userName={user.name || user.email}
             />
-          ) : ( */}
+          ) : (
             <AppShell>
               <ActivePage />
               {AI_CHARACTER_VIEWS.has(activeView) && <AICharacter />}
             </AppShell>
-          {/* )
+           )
         ) : (
           <AuthPage onGoHome={goToLanding} />
         )
-      )} */}
+      )} 
 
       <ToastContainer />
       <XPFloatLayer />
