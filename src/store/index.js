@@ -264,18 +264,18 @@ export const useLeaderboardStore = create(
   persist(
     (set) => ({
       entries: [
-        { id: 'u1', name: 'Alex Chen',     avatar: null, xp: 4820, streak: 23, rank: 1, weeklyXP: 620 },
-        { id: 'u2', name: 'Maria Santos',  avatar: null, xp: 3950, streak: 15, rank: 2, weeklyXP: 540 },
-        { id: 'u3', name: 'Jordan Kim',    avatar: null, xp: 3100, streak: 31, rank: 3, weeklyXP: 480 },
-        { id: 'u4', name: 'Priya Sharma',  avatar: null, xp: 2700, streak: 8,  rank: 4, weeklyXP: 390 },
-        { id: 'u5', name: 'Carlos Rivera', avatar: null, xp: 2200, streak: 5,  rank: 5, weeklyXP: 310 },
-        { id: 'u6', name: 'Yuki Tanaka',   avatar: null, xp: 1900, streak: 12, rank: 6, weeklyXP: 290 },
-        { id: 'u7', name: 'Sam Okonkwo',   avatar: null, xp: 1450, streak: 3,  rank: 7, weeklyXP: 210 },
+        { id: 'u1', name: 'Precious Ntekim',     avatar: null, xp: 750, streak: 23, rank: 1, weeklyXP: 300 },
+        { id: 'u2', name: 'Prince Richard',  avatar: null, xp: 735, streak: 15, rank: 2, weeklyXP: 290 },
+        { id: 'u3', name: 'Munachi Eze',    avatar: null, xp: 720, streak: 31, rank: 3, weeklyXP: 285 },
+        { id: 'u4', name: 'Odudu Etim',  avatar: null, xp: 715, streak: 8,  rank: 4, weeklyXP: 280 },
+        { id: 'u5', name: 'Joe Igwe', avatar: null, xp: 685, streak: 5,  rank: 5, weeklyXP: 250 },
+        { id: 'u6', name: 'Samuel Akpan',   avatar: null, xp: 660, streak: 12, rank: 6, weeklyXP: 235 },
+        { id: 'u7', name: 'David Ideyi',   avatar: null, xp: 650, streak: 3,  rank: 7, weeklyXP: 210 },
       ],
       userEntry: null,
       syncUserEntry: (name, xp, streak, weeklyXP) =>
         set({ userEntry: { id: 'me', name, xp, streak, weeklyXP, rank: 0 } }),
     }),
-    { name: 'taskr-leaderboard-v2', storage: createJSONStorage(() => localStorage) }
+    { name: 'taskr-leaderboard-v1', storage: createJSONStorage(() => localStorage) }
   )
 )
